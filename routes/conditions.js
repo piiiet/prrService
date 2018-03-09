@@ -27,11 +27,11 @@ router.get('/:tourOperator', function (req, res, next) {
     conditionClient
         .get(conditionOptions)
         .on('error', function (err) {
-            throw err;
+            return next(err);
         })
-        .pipe(archiveClient.post(archiveOptions, function (err, response, body) {
-            if (err) {
-                throw err;
+        .pipe(archiveClient.post(archiveOptions, function (error, response, body) {
+            if (error) {
+                return next(new Error(error.message));
             }
             res.json({url: `http://documentService/conditions/${JSON.parse(body).token}`});
         }));
