@@ -1,3 +1,11 @@
 {
-  "port": 3011
+  "port": 3012,
+  "conditionService":{
+    "url": "http://localhost:3010",
+    "timeout": 2000
+  },
+  "archiveService":{
+    "url": "http://localhost:3011",
+    "timeout": 2000
+  }
 }

@@ -1,8 +1,8 @@
 'use strict';
 
-const express       = require('express');
-const config        = require('./config/config');
-const conditions    = require('./routes/conditions');
+const express = require('express');
+const config = require('./config/config');
+const conditions = require('./routes/conditions');
 
 
 // application
