@@ -7,7 +7,7 @@ const conditionConfig = require('../config/config').get('conditionService');
 const archiveConfig = require('../config/config').get('archiveService');
 
 const conditionClient = request.defaults({
-    baseUrl: conditionConfig.url + '/conditions',
+    baseUrl: conditionConfig.url,
     timeout: conditionConfig.timeout
 });
 
@@ -18,7 +18,7 @@ const archiveClient = request.defaults({
 
 router.get('/:tourOperator', function (req, res, next) {
     const conditionOptions = {
-        uri: req.params.tourOperator,
+        uri: 'conditions/' + req.params.tourOperator,
         qs: {type: 'pdf'}
     };
     const archiveOptions = {
@@ -34,7 +34,10 @@ router.get('/:tourOperator', function (req, res, next) {
                 return next(new Error(error.message));
             }
             res.json({url: `http://documentService/conditions/${JSON.parse(body).token}`});
-        }));
+        }))
+        .on('error', function (err) {
+            return next(err);
+        });
 });
 
 module.exports = router;
