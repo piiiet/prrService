@@ -10,7 +10,6 @@ const conditionClient = request.defaults({
     baseUrl: conditionConfig.url,
     timeout: conditionConfig.timeout
 });
-
 const archiveClient = request.defaults({
     baseUrl: archiveConfig.url,
     timeout: archiveConfig.timeout
@@ -41,7 +40,6 @@ router.post('/:tourOperator', function (req, res, next) {
             })
         );
 });
-
 router.get('/:token', function (req, res, next) {
     const archiveOptions = {
         uri: 'conditions/' + req.params.token
@@ -52,7 +50,6 @@ router.get('/:token', function (req, res, next) {
         }
     }).pipe(res);
 });
-
 router.patch('/:token', function (req, res, next) {
     const archiveOptions = {
         uri: 'conditions/' + req.params.token
