@@ -15,5 +15,5 @@ app.use(error.error404, error.errorHandler);
 
 
 app.listen(config.get('port'), function () {
-    console.log(`archiveService running on port ${config.get('port')}`);
+    console.log(`documentService running on port ${config.get('port')}`);
 });

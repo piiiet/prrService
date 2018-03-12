@@ -16,7 +16,7 @@ const archiveClient = request.defaults({
     timeout: archiveConfig.timeout
 });
 
-router.get('/:tourOperator', function (req, res, next) {
+router.post('/:tourOperator', function (req, res, next) {
     const conditionOptions = {
         uri: 'conditions/' + req.params.tourOperator,
         qs: {type: 'pdf'}
@@ -25,19 +25,21 @@ router.get('/:tourOperator', function (req, res, next) {
         uri: 'conditions'
     };
     conditionClient
-        .get(conditionOptions)
-        .on('error', function (err) {
-            return next(err);
-        })
-        .pipe(archiveClient.post(archiveOptions, function (error, response, body) {
+        .get(conditionOptions, function (error, response, body) {
             if (error) {
                 return next(new Error(error.message));
             }
-            res.json({url: `http://documentService/conditions/${JSON.parse(body).token}`});
-        }))
-        .on('error', function (err) {
-            return next(err);
-        });
+        })
+        .pipe(
+            archiveClient.post(archiveOptions, function (error, response, body) {
+                if (error) {
+                    return next(new Error(error.message));
+                }
+                const location = req.baseUrl + '/' + JSON.parse(body).token;
+                res.location(location);
+                res.redirect(201, location);
+            })
+        );
 });
 
 module.exports = router;
