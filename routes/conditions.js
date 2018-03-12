@@ -42,4 +42,15 @@ router.post('/:tourOperator', function (req, res, next) {
         );
 });
 
+router.get('/:token', function (req, res, next) {
+    const archiveOptions = {
+        uri: 'conditions/' + req.params.token
+    };
+    archiveClient.get(archiveOptions, function (error, response, body) {
+        if (error) {
+            return next(new Error(error.message));
+        }
+    }).pipe(res);
+});
+
 module.exports = router;
