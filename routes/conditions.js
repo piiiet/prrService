@@ -53,4 +53,15 @@ router.get('/:token', function (req, res, next) {
     }).pipe(res);
 });
 
+router.patch('/:token', function (req, res, next) {
+    const archiveOptions = {
+        uri: 'conditions/' + req.params.token
+    };
+    archiveClient.patch(archiveOptions, function (error, response, body) {
+        if (error) {
+            return next(new Error(error.message));
+        }
+    }).pipe(res);
+});
+
 module.exports = router;
