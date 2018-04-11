@@ -7,5 +7,6 @@
   "archiveService":{
     "url": "http://localhost:3011",
     "timeout": 2000
-  }
+  },
+  "documentType": "pdf"
 }

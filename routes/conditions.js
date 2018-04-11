@@ -3,8 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
-const conditionConfig = require('../config/config').get('conditionService');
-const archiveConfig = require('../config/config').get('archiveService');
+const config = require('../config/config');
+const documentType = config.get('documentType');
+const conditionConfig = config.get('conditionService');
+const archiveConfig = config.get('archiveService');
 
 const conditionClient = request.defaults({
     baseUrl: conditionConfig.url,
@@ -18,10 +20,7 @@ const archiveClient = request.defaults({
 router.post('/:tourOperator', function (req, res, next) {
     const conditionOptions = {
         uri: 'conditions/' + req.params.tourOperator,
-        qs: {type: 'pdf'}
-    };
-    const archiveOptions = {
-        uri: 'conditions'
+        qs: {type: req.params.type || documentType}
     };
     conditionClient
         .get(conditionOptions, function (error, response, body) {
@@ -39,26 +38,6 @@ router.post('/:tourOperator', function (req, res, next) {
                 res.redirect(201, location);
             })
         );
-});
-router.get('/:token', function (req, res, next) {
-    const archiveOptions = {
-        uri: 'conditions/' + req.params.token
-    };
-    archiveClient.get(archiveOptions, function (error, response, body) {
-        if (error) {
-            return next(new Error(error.message));
-        }
-    }).pipe(res);
-});
-router.patch('/:token', function (req, res, next) {
-    const archiveOptions = {
-        uri: 'conditions/' + req.params.token
-    };
-    archiveClient.patch(archiveOptions, function (error, response, body) {
-        if (error) {
-            return next(new Error(error.message));
-        }
-    }).pipe(res);
 });
 
 module.exports = router;
