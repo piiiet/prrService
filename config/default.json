@@ -1,5 +1,5 @@
 {
-  "port": 3012,
+  "port": 3010,
   "conditionService":{
     "url": "http://localhost:3010",
     "timeout": 2000
