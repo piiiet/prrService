@@ -37,7 +37,7 @@ const validate = validator({
     }
 });
 
-router.post('/:type', function (req, res, next) {
+router.post('/:id', function (req, res, next) {
     // validate request
     if (!validate(req.query)) {
         const error = validate.errors.shift();
@@ -45,8 +45,11 @@ router.post('/:type', function (req, res, next) {
     }
 
     const formOptions = {
-        uri: 'forms/' + req.params.type,
-        qs: {tourOperatorCode: req.query.tourOperatorCode}
+        uri: 'forms/' + req.params.id,
+        qs: {
+            tourOperatorCode: req.query.tourOperatorCode,
+            type: req.query.type
+        }
     };
     formClient
         .get(formOptions, function (error, response, body) {

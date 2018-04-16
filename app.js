@@ -24,8 +24,8 @@ app.use(function (req, res, next) {
     next(createError(404));
 });
 app.use(function (err, req, res, next) {
-    logger.error(err.message, err.stack, err);
-    res.sendStatus(err.status || 500);
+    logger.error(err.message, err);
+    res.status(err.status || 500).send(err.message);
 });
 
 
