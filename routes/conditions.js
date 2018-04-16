@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const config = require('../config/config');
-const documents = config.get('documents');
+const documentsConfig = config.get('documents');
 const conditionConfig = config.get('conditionService');
 const archiveConfig = config.get('archiveService');
 
@@ -20,7 +20,7 @@ const archiveClient = request.defaults({
 router.post('/:tourOperator', function (req, res, next) {
     const conditionOptions = {
         uri: 'conditions/' + req.params.tourOperator,
-        qs: {type: req.params.type || documents.type}
+        qs: {type: req.params.type || documentsConfig.type}
     };
     const archiveOptions = {
         uri: 'documents'
@@ -37,7 +37,7 @@ router.post('/:tourOperator', function (req, res, next) {
                     return next(new Error(error.message));
                 }
                 try {
-                    const filename = documents.url + '/' + JSON.parse(body).filename;
+                    const filename = documentsConfig.url + '/' + JSON.parse(body).filename;
                     res.location(filename);
                     res.redirect(201, filename);
                 } catch (err) {

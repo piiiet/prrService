@@ -4,12 +4,12 @@
     "url": "/documents",
     "type": "pdf"
   },
-  "conditionService":{
-    "url": "http://localhost:3014",
-    "timeout": 2000
-  },
   "archiveService":{
     "url": "http://localhost:3011",
+    "timeout": 2000
+  },
+  "conditionService":{
+    "url": "http://localhost:3014",
     "timeout": 2000
   }
 }
