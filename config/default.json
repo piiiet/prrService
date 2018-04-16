@@ -1,12 +1,15 @@
 {
   "port": 3010,
+  "documents": {
+    "url": "/documents",
+    "type": "pdf"
+  },
   "conditionService":{
-    "url": "http://localhost:3010",
+    "url": "http://localhost:3014",
     "timeout": 2000
   },
   "archiveService":{
     "url": "http://localhost:3011",
     "timeout": 2000
-  },
-  "documentType": "pdf"
+  }
 }
