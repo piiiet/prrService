@@ -4,6 +4,7 @@ const express = require('express');
 const createError = require('http-errors');
 const config = require('./config/config');
 const conditions = require('./routes/conditions');
+const forms = require('./routes/forms');
 const documents = require('./routes/documents');
 
 // logger
@@ -14,6 +15,7 @@ const app = express();
 
 // routes
 app.use('/conditions', conditions);
+app.use('/forms', forms);
 app.use('/documents', documents);
 
 

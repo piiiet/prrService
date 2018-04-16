@@ -3,13 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const validator = require('is-my-json-valid');
 const config = require('../config/config');
 const documentsConfig = config.get('documents');
 
-const conditionConfig = config.get('conditionService');
-const conditionClient = request.defaults({
-    baseUrl: conditionConfig.url,
-    timeout: conditionConfig.timeout
+const formConfig = config.get('formService');
+const formClient = request.defaults({
+    baseUrl: formConfig.url,
+    timeout: formConfig.timeout
 });
 const archiveConfig = config.get('archiveService');
 const archiveClient = request.defaults({
@@ -18,13 +19,37 @@ const archiveClient = request.defaults({
     timeout: archiveConfig.timeout
 });
 
-router.post('/:tourOperator', function (req, res, next) {
-    const conditionOptions = {
-        uri: 'conditions/' + req.params.tourOperator,
-        qs: {type: req.query.type || documentsConfig.type}
+const validate = validator({
+    required: true,
+    type: 'object',
+    properties: {
+        tourOperatorCode: {
+            required: true,
+            type: 'string'
+        },
+        type: {
+            type: 'string',
+            enum:
+            - 'pdf'
+            - 'html',
+            default: 'pdf'
+        }
+    }
+});
+
+router.post('/:type', function (req, res, next) {
+    // validate request
+    if (!validate(req.query)) {
+        const error = validate.errors.shift();
+        throw createError(400, error);
+    }
+
+    const formOptions = {
+        uri: 'forms/' + req.params.type,
+        qs: {tourOperatorCode: req.query.tourOperatorCode}
     };
-    conditionClient
-        .get(conditionOptions, function (error, response, body) {
+    formClient
+        .get(formOptions, function (error, response, body) {
             if (error) {
                 return next(new Error(error.message));
             }

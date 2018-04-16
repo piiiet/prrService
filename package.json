@@ -16,6 +16,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "http-errors": "^1.6.3",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "validator": "^9.4.1"
   }
 }

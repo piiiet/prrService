@@ -6,6 +6,11 @@
   },
   "archiveService":{
     "url": "http://localhost:3011",
+    "urlDocuments": "documents",
+    "timeout": 2000
+  },
+  "formService":{
+    "url": "http://localhost:3013",
     "timeout": 2000
   },
   "conditionService":{
