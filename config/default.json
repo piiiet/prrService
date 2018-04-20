@@ -9,6 +9,10 @@
     "urlDocuments": "documents",
     "timeout": 2000
   },
+  "entryRequirementsService":{
+    "url": "http://localhost:3012",
+    "timeout": 2000
+  },
   "formService":{
     "url": "http://localhost:3013",
     "timeout": 2000
