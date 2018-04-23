@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require('express');
+const createError = require('http-errors');
 const router = express.Router();
 const request = require('request');
 const validator = require('is-my-json-valid');
@@ -20,7 +21,6 @@ const archiveClient = request.defaults({
 });
 
 const validate = validator({
-    required: true,
     type: 'object',
     properties: {
         tourOperatorCode: {
@@ -41,7 +41,7 @@ router.post('/:id', function (req, res, next) {
     // validate request
     if (!validate(req.query)) {
         const error = validate.errors.shift();
-        throw createError(400, error);
+        throw createError(400, error.field.replace('data.', '') + ' ' + error.message);
     }
 
     const formOptions = {
