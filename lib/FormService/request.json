@@ -1,13 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "title": "Requirements Request",
-  "description": "Schema for entryRequirementsService request.",
+  "title": "Forms Request",
+  "description": "Schema for formService request.",
   "properties": {
-    "nat": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 2
+    "tourOperatorCode": {
+      "required": true,
+      "type": "string"
     },
     "type": {
       "type": "string",
