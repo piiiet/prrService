@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const FormClient = require('../lib/FormService/client');
-const ArchiveClient = require('../lib/Archive/client');
+const ArchiveClient = require('../lib/ArchiveService/client');
 
 router.post('/:id', function (req, res, next) {
     FormClient
