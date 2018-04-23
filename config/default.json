@@ -6,7 +6,10 @@
   },
   "archiveService":{
     "url": "http://localhost:3011",
-    "urlDocuments": "documents",
+    "timeout": 2000
+  },
+  "requirementsService":{
+    "url": "http://localhost:3012",
     "timeout": 2000
   },
   "formService":{

@@ -3,6 +3,7 @@
 const express = require('express');
 const createError = require('http-errors');
 const config = require('./config/config');
+const requirements = require('./routes/requirements');
 const conditions = require('./routes/conditions');
 const forms = require('./routes/forms');
 const documents = require('./routes/documents');
@@ -13,7 +14,9 @@ global.logger = console;
 // application
 const app = express();
 
+
 // routes
+app.use('/requirements', requirements);
 app.use('/conditions', conditions);
 app.use('/forms', forms);
 app.use('/documents', documents);
