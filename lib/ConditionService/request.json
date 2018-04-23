@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Conditions Request",
+  "description": "Schema for conditionService request.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "html"
+      ],
+      "default": "pdf"
+    }
+  }
+}
