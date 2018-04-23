@@ -2,9 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
+
 const RequirementsClient = require('../lib/RequirementsService/client');
 const ArchiveClient = require('../lib/ArchiveService/client');
-
 
 router.post('/countries/:country', function (req, res, next) {
     RequirementsClient
