@@ -1,0 +1,18 @@
+{
+  "archiveService":{
+    "url": "http://archiveservice:3011",
+    "timeout": 2000
+  },
+  "requirementsService":{
+    "url": "http://requirementsservice:3012",
+    "timeout": 2000
+  },
+  "formService":{
+    "url": "http://formservice:3013",
+    "timeout": 2000
+  },
+  "conditionService":{
+    "url": "http://conditionservice:3014",
+    "timeout": 2000
+  }
+}
