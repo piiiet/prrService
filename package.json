@@ -1,7 +1,7 @@
 {
   "name": "documentService",
   "version": "1.0.0",
-  "description": "",
+  "description": "documentt managing service",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -17,6 +17,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "http-errors": "^1.6.3",
+    "nconf": "^0.10.0",
     "request": "^2.83.0",
     "validator": "^9.4.1"
   }

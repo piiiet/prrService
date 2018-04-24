@@ -4,7 +4,8 @@ WORKDIR /src
 
 ENV NODE_ENV production
 
-#RUN apk add --no-cache python make git g++ krb5-dev krb5-libs expat
+RUN apk add --no-cache python make git
+#g++ krb5-dev krb5-libs expat
 
 ADD package.json package-lock.json /src/
 
