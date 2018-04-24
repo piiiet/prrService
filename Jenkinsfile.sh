@@ -45,9 +45,9 @@ printf '%s\n' "${AVAILABLE_IMAGE_TAGS[@]}"
 
 #######################################kubernetes#######################################
 if [ "$MY_GIT_BRANCH" == "develop" ]; then
-   kubectl set image deployment/document document=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-dev --context staging
+   kubectl set image deployment/document documentservice=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-dev --context staging
 elif [ "$MY_GIT_BRANCH" == "master" ]; then
-   kubectl set image deployment/document document=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-staging --context staging
+   kubectl set image deployment/document documentservice=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-staging --context staging
 fi
 #######################################kubernetes#######################################
 
