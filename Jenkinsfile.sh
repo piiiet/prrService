@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-IMAGE_NAME=traffics/documentservice
+IMAGE_NAME=traffics/prrservice
 
 # the branch which contain latest stable code, used to tag docker image with latest if this branch used for building
 STABLE_BRANCH=master
@@ -45,9 +45,9 @@ printf '%s\n' "${AVAILABLE_IMAGE_TAGS[@]}"
 
 #######################################kubernetes#######################################
 if [ "$MY_GIT_BRANCH" == "develop" ]; then
-   kubectl set image deployment/document document=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-dev --context staging
+   kubectl set image deployment/prr prr=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-dev --context staging
 elif [ "$MY_GIT_BRANCH" == "master" ]; then
-   kubectl set image deployment/document document=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-staging --context staging
+   kubectl set image deployment/prr prr=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-staging --context staging
 fi
 #######################################kubernetes#######################################
 
