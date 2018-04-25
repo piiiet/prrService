@@ -3,6 +3,7 @@
 const express = require('express');
 const createError = require('http-errors');
 const config = require('./config/config');
+const alive = require('./routes/alive');
 const requirements = require('./routes/requirements');
 const conditions = require('./routes/conditions');
 const forms = require('./routes/forms');
@@ -16,6 +17,7 @@ const app = express();
 
 
 // routes
+app.use('/alive', alive);
 app.use('/requirements', requirements);
 app.use('/conditions', conditions);
 app.use('/forms', forms);
