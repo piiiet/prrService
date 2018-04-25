@@ -37,13 +37,13 @@ spec:
               path: /alive
               port: web
             initialDelaySeconds: 3
-            periodSeconds: 15
+            periodSeconds: 30
           readinessProbe:
             httpGet:
               path: /alive
               port: web
             initialDelaySeconds: 3
-            periodSeconds: 15
+            periodSeconds: 30
           volumeMounts:
             - name: trafficsinternalrootcacrt
               mountPath: "/etc/traffics/ssl/"
@@ -74,6 +74,6 @@ spec:
     apiVersion: apps/v1beta1
     kind: Deployment
     name: document
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 70

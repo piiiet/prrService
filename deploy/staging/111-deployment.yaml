@@ -37,13 +37,13 @@ spec:
               path: /alive
               port: web
             initialDelaySeconds: 3
-            periodSeconds: 15
+            periodSeconds: 30
           readinessProbe:
             httpGet:
               path: /alive
               port: web
             initialDelaySeconds: 3
-            periodSeconds: 15
+            periodSeconds: 30
           volumeMounts:
             - name: trafficsinternalrootcacrt
               mountPath: "/etc/traffics/ssl/"
