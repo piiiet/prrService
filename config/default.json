@@ -8,8 +8,8 @@
     "url": "http://archiveservice:3011",
     "timeout": 2000
   },
-  "requirementsService":{
-    "url": "http://requirementsservice:3012",
+  "entryRequirementsService":{
+    "url": "http://entryrequirementsservice:3012",
     "timeout": 2000
   },
   "formService":{

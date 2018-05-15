@@ -3,7 +3,7 @@
     "url": "http://localhost:3011",
     "timeout": 2000
   },
-  "requirementsService":{
+  "entryRequirementsService":{
     "url": "http://localhost:3012",
     "timeout": 2000
   },
