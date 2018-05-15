@@ -12,6 +12,9 @@ router.post('/:tourOperator', function (req, res, next) {
             if (error) {
                 return next(new Error(error.message));
             }
+            if (response.statusCode === 500) {
+                return next(new Error(body));
+            }
         })
         .pipe(
             ArchiveClient.post(function (error, filename) {

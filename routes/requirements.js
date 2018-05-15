@@ -12,6 +12,9 @@ router.post('/countries/:country', function (req, res, next) {
             if (error) {
                 return next(new Error(error.message));
             }
+            if (response.statusCode === 500) {
+                return next(new Error(body));
+            }
         })
         .pipe(
             ArchiveClient.post(function (error, filename) {
@@ -29,6 +32,9 @@ router.post('/airports/:airport', function (req, res, next) {
         .getByAirport(req, function (error, response, body) {
             if (error) {
                 return next(new Error(error.message));
+            }
+            if (response.statusCode === 500) {
+                return next(new Error(body));
             }
         })
         .pipe(
