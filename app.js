@@ -35,6 +35,6 @@ app.use(function (err, req, res, next) {
 
 
 app.listen(config.get('port'), function () {
-    console.log(`documentService running on port ${config.get('port')}`);
+    console.log(`prrService running on port ${config.get('port')}`);
 });
 
