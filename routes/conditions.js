@@ -7,24 +7,26 @@ const ConditionClient = require('../lib/ConditionService/client');
 const ArchiveClient = require('../lib/ArchiveService/client');
 
 router.post('/:tourOperator', function (req, res, next) {
-    ConditionClient
-        .get(req, function (error, response, body) {
-            if (error) {
-                return next(new Error(error.message));
-            }
-            if (response.statusCode === 500) {
-                return next(new Error(body));
-            }
+    const r = ConditionClient
+        .get(req)
+        .on ('error', function(err) {
+            return next(err);
         })
-        .pipe(
-            ArchiveClient.post(function (error, filename) {
-                if (error) {
-                    return next(new Error(error.message));
-                }
-                res.location(filename);
-                res.redirect(201, filename);
-            })
-        );
+        .on('response', function (response) {
+            if (response.statusCode === 200) {
+                r.pipe(
+                    ArchiveClient.post(function (error, filename) {
+                        if (error) {
+                            return next(new Error(error.message));
+                        }
+                        res.location(filename);
+                        res.redirect(201, filename);
+                    })
+                );
+            } else {
+                r.pipe(res);
+            }
+        });
 });
 
 module.exports = router;
