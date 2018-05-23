@@ -8,7 +8,7 @@
     "url": "http://archiveservice:3011",
     "timeout": 2000
   },
-  "entryRequirementsService":{
+  "visaService":{
     "url": "http://entryrequirementsservice:3012",
     "timeout": 2000
   },
