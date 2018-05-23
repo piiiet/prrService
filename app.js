@@ -2,6 +2,7 @@
 
 const express = require('express');
 const createError = require('http-errors');
+const bodyParser = require('body-parser');
 const config = require('./config/config');
 const alive = require('./routes/alive');
 const requirements = require('./routes/requirements');
@@ -15,6 +16,9 @@ global.logger = console;
 // application
 const app = express();
 
+// post data
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // routes
 app.use('/alive', alive);
@@ -22,7 +26,6 @@ app.use('/requirements', requirements);
 app.use('/conditions', conditions);
 app.use('/forms', forms);
 app.use('/documents', documents);
-
 
 // error handler
 app.use(function (req, res, next) {

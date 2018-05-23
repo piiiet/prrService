@@ -6,7 +6,7 @@ const router = express.Router();
 const FormClient = require('../lib/FormService/client');
 const ArchiveClient = require('../lib/ArchiveService/client');
 
-router.post('/:id', function (req, res, next) {
+router.post('', function (req, res, next) {
     const r = FormClient
         .get(req)
         .on ('error', function(err) {
