@@ -6,7 +6,7 @@ const router = express.Router();
 const ConditionClient = require('../lib/ConditionService/client');
 const ArchiveClient = require('../lib/ArchiveService/client');
 
-router.post('/:tourOperator', function (req, res, next) {
+router.post('', function (req, res, next) {
     const r = ConditionClient
         .get(req)
         .on ('error', function(err) {

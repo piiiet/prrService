@@ -4,6 +4,10 @@
   "title": "Conditions Request",
   "description": "Schema for conditionService request.",
   "properties": {
+    "tourOperatorCode": {
+      "required": true,
+      "type": "string"
+    },
     "type": {
       "type": "string",
       "enum": [
