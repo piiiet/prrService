@@ -6,10 +6,8 @@ const router = express.Router();
 const RequirementsClient = require('../lib/RequirementsService/client');
 const ArchiveClient = require('../lib/ArchiveService/client');
 
-router.post('/countries/:country', handleRequest);
-router.post('/airports/:airport', handleRequest);
-
-function handleRequest(req, res, next) {
+router.post('', function (req, res, next) {
+    req.url = req.body.country ? 'countries/' + req.body.country : (req.body.airport ? 'airports/' + req.body.airport : '');
     const r = RequirementsClient
         .get(req)
         .on ('error', function(err) {
@@ -30,6 +28,6 @@ function handleRequest(req, res, next) {
                 r.pipe(res);
             }
         });
-}
+});
 
 module.exports = router;
