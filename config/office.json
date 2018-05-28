@@ -1,0 +1,18 @@
+{
+  "archiveService":{
+    "url": "http://localhost:3011",
+    "timeout": 2000
+  },
+  "visaService":{
+    "url": "http://localhost:3012",
+    "timeout": 2000
+  },
+  "formService":{
+    "url": "http://localhost:3013",
+    "timeout": 2000
+  },
+  "conditionService":{
+    "url": "http://localhost:3014",
+    "timeout": 2000
+  }
+}

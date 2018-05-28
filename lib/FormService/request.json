@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Forms Request",
+  "description": "Schema for formService request.",
+  "properties": {
+    "form": {
+      "required": true,
+      "type": "integer",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "tourOperatorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "html"
+      ],
+      "default": "pdf"
+    }
+  }
+}

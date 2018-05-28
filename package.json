@@ -1,0 +1,25 @@
+{
+  "name": "prrService",
+  "version": "1.0.0",
+  "description": "documentt managing service",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitserver.office.traffics-switch.de:traffics/prrService.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "http-errors": "^1.6.3",
+    "is-my-json-valid": "^2.17.2",
+    "nconf": "^0.10.0",
+    "request": "^2.83.0",
+    "validator": "^9.4.1"
+  }
+}

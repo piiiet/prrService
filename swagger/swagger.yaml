@@ -1,0 +1,169 @@
+swagger: '2.0'
+info:
+  title: document service API
+  description: >
+  version: 1.0.0
+host: 'localhost:3012'
+schemes:
+  - http
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /conditions/{tourOperator}:
+    post:
+      summary: create a document of terms and conditions
+      description: |
+        This request creates a new document of terms and conditions for the given tour operator.
+      parameters:
+      tags:
+        - conditions
+      responses:
+        '201':
+          description: Created
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error500'
+  /conditions/{token}:
+    get:
+      summary: booking details
+      description: |
+        Book details
+      parameters:
+        - $ref: '#/parameters/auth'
+        - $ref: '#/parameters/bookingCode'
+      tags:
+        - bookings
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BookingListResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error400'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error404'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error500DATE'
+    patch:
+      summary: fixing an option
+      description: |
+        Fixes an option on the tour operator side.
+      parameters:
+        - name: auth
+          in: header
+          description: 'Base64-encoded “user:password”'
+          required: true
+          type: string
+          default: dHJhZmZpY3MyLmNvbm5lY3RvcnRlc3Q6cTA3SVJGMlU=
+        - name: body
+          in: body
+          description: BookingRequest object
+          required: true
+          schema:
+            $ref: '#/definitions/BookingTypeRequest'
+        - $ref: '#/parameters/bookingCode'
+      tags:
+        - bookings
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BookingResponse'
+          examples:
+            application/json:
+              statusCode: OK
+              tourOperatorBookingCode: '81540400'
+              trafficsBookingCode: '20160819153599'
+              trafficsBookingType: through
+              trafficsReturnCode: '27'
+              trafficsReturnMessage: ''
+              tomaCode: '204'
+              tomaMessage: Festbuchung ok
+              tomaInfo:
+                - T E S T - VORGANG !!
+                - DER VORGANG WURDE AM 19.08.16 FEST GEBUCHT !
+                - 'BITTE BEACHTEN SIE, DASS BEI DIESER'
+                - 'WEITERE BUCHUNGSINFORMATIONEN KOENNEN MIT AKTION '
+                - '"'
+                - BI
+                - '"'
+                - ' ABGERUFEN WERDEN'
+              tomaServiceList: []
+              commonOffer: null
+              customer:
+                firstname: TEST
+                lastnaame: TEST
+                street: TESTSTR.1
+                zipCode: '12345'
+                city: TESTSTADT
+                countryCode: D
+                email: LEISTNER@TRAFFICS.DE
+                phone: 03059002820
+                mobilePhone: null
+                fax: null
+                additionalInformation: LEISTNER@TRAFFICS.DE
+                remark: null
+                number: null
+                dateOfBirth: null
+                salutation: null
+                requirement: 'no rain, please'
+              travellerList:
+                - type: H
+                  firstname: AAA
+                  lastname: TFX
+                  dateOfBirth: ''
+                  age: ''
+                  price:
+                    value: '49.00'
+                    currency: EUR
+                - type: D
+                  firstname: BBB
+                  lastname: TFX
+                  dateOfBirth: ''
+                  age: ''
+                  price:
+                    value: '49.00'
+                    currency: EUR
+              totalPrice:
+                value: '98'
+                currency: EUR
+              pricePerPerson:
+                value: '49'
+                currency: EUR
+              pricePerPersonDifference: null
+              inkassoList: []
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error400'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error404'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error500DATE'
+definitions:
+  Error500:
+    type: object
+    properties:
+      error:
+        type: string
+      x-request-id:
+        type: string
+    example:
+      error: 'backend error: invalid user or password'
+      x-request-id: 33f48dd6-f4e0-4b50-b4fc-202eff933bf0
