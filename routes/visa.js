@@ -3,12 +3,12 @@
 const express = require('express');
 const router = express.Router();
 
-const RequirementsClient = require('../lib/VisaService/client');
+const VisaClient = require('../lib/VisaService/client');
 const ArchiveClient = require('../lib/ArchiveService/client');
 
 router.post('', function (req, res, next) {
     req.url = req.body.country ? 'countries/' + req.body.country : (req.body.airport ? 'airports/' + req.body.airport : '');
-    const r = RequirementsClient
+    const r = VisaClient
         .get(req)
         .on ('error', function(err) {
             return next(err);
