@@ -5,19 +5,19 @@
     "type": "pdf"
   },
   "archiveService":{
-    "url": "http://archiveservice:3011",
+    "url": "http://archiveservice.green-dev.svc.cluster.local",
     "timeout": 2000
   },
   "visaService":{
-    "url": "http://entryrequirementsservice:3012",
+    "url": "http://entryrequirementsservice.green-dev.svc.cluster.local",
     "timeout": 2000
   },
   "formService":{
-    "url": "http://formservice:3013",
+    "url": "http://formservice.green-dev.svc.cluster.local",
     "timeout": 2000
   },
   "conditionService":{
-    "url": "http://conditionservice:3014",
+    "url": "http://conditionservice.green-dev.svc.cluster.local",
     "timeout": 2000
   }
 }
