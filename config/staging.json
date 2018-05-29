@@ -1,0 +1,18 @@
+{
+  "archiveService":{
+    "url": "http://archiveservice.green-staging.svc.cluster.local",
+    "timeout": 2000
+  },
+  "visaService":{
+    "url": "http://entryrequirementsservice.green-staging.svc.cluster.local",
+    "timeout": 2000
+  },
+  "formService":{
+    "url": "http://formservice.green-staging.svc.cluster.local",
+    "timeout": 2000
+  },
+  "conditionService":{
+    "url": "http://conditionservice.green-staging.svc.cluster.local",
+    "timeout": 2000
+  }
+}
