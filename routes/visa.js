@@ -10,7 +10,7 @@ router.post('', function (req, res, next) {
     req.url = req.body.country ? 'countries/' + req.body.country : (req.body.airport ? 'airports/' + req.body.airport : '');
     const r = VisaClient
         .get(req)
-        .on ('error', function(err) {
+        .on('error', function (err) {
             return next(err);
         })
         .on('response', function (response) {
@@ -18,7 +18,7 @@ router.post('', function (req, res, next) {
                 r.pipe(
                     ArchiveClient
                         .post()
-                        .on ('error', function(err) {
+                        .on('error', function (err) {
                             return next(err);
                         })
                         .on('response', function (response) {

@@ -9,7 +9,7 @@ const ArchiveClient = require('../lib/ArchiveService/client');
 router.post('', function (req, res, next) {
     const r = ConditionClient
         .get(req)
-        .on ('error', function(err) {
+        .on('error', function (err) {
             return next(err);
         })
         .on('response', function (response) {
@@ -17,7 +17,7 @@ router.post('', function (req, res, next) {
                 r.pipe(
                     ArchiveClient
                         .post()
-                        .on ('error', function(err) {
+                        .on('error', function (err) {
                             return next(err);
                         })
                         .on('response', function (response) {

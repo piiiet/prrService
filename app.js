@@ -17,7 +17,7 @@ global.logger = console;
 const app = express();
 
 // post data
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // routes
