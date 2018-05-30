@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
     next(createError(404));
 });
 app.use(function (err, req, res, next) {
-    logger.error(err.message, err);
+    logger.error(err.message, err, req.body);
     res.status(err.status || 500).send(err.message);
 });
 
