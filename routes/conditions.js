@@ -13,7 +13,7 @@ router.post('', function (req, res, next) {
             return next(err);
         })
         .on('response', function (response) {
-            if (response.statusCode === 200) {
+            if (response.statusCode === 200 && response.headers['content-disposition']) { // mediaserver returns 200 even empty response
                 r.pipe(
                     ArchiveClient
                         .post()
@@ -25,7 +25,7 @@ router.post('', function (req, res, next) {
                         })
                 );
             } else {
-                r.pipe(res);
+                res.sendStatus(400);
             }
         });
 });
