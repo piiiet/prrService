@@ -6,18 +6,18 @@
   },
   "archiveService":{
     "url": "http://archiveservice:3011",
-    "timeout": 2000
+    "timeout": 5000
   },
   "visaService":{
     "url": "http://entryrequirementsservice:3012",
-    "timeout": 2000
+    "timeout": 5000
   },
   "formService":{
     "url": "http://formservice:3013",
-    "timeout": 2000
+    "timeout": 5000
   },
   "conditionService":{
     "url": "http://conditionservice:3014",
-    "timeout": 2000
+    "timeout": 5000
   }
 }
