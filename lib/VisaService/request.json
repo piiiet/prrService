@@ -1,9 +1,16 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "title": "Requirements Request",
-  "description": "Schema for entryRequirementsService request.",
   "properties": {
+    "country": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "airport": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    },
     "nat": {
       "type": "string",
       "minLength": 2,
@@ -17,5 +24,9 @@
       ],
       "default": "pdf"
     }
-  }
+  },
+  "oneOf": [
+    {"required": ["country"]},
+    {"required": ["airport"]}
+  ]
 }
