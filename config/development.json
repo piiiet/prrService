@@ -1,18 +1,14 @@
 {
   "archiveService":{
-    "url": "http://archiveservice.green-dev.svc.cluster.local",
-    "timeout": 5000
+    "url": "http://archiveservice.green-dev.svc.cluster.local"
   },
   "visaService":{
-    "url": "http://entryrequirementsservice.green-dev.svc.cluster.local",
-    "timeout": 5000
+    "url": "http://entryrequirementsservice.green-dev.svc.cluster.local"
   },
   "formService":{
-    "url": "http://formservice.green-dev.svc.cluster.local",
-    "timeout": 5000
+    "url": "http://formservice.green-dev.svc.cluster.local"
   },
   "conditionService":{
-    "url": "http://conditionservice.green-dev.svc.cluster.local",
-    "timeout": 5000
+    "url": "http://conditionservice.green-dev.svc.cluster.local"
   }
 }
