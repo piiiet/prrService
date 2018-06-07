@@ -50,4 +50,3 @@ elif [ "$MY_GIT_BRANCH" == "master" ]; then
    kubectl set image deployment/prr prr=$NEXUS_PULL_URL/$IMAGE_NAME:$IMAGE_COMMIT_ID --namespace=green-staging --context staging
 fi
 #######################################kubernetes#######################################
-
