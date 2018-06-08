@@ -9,6 +9,7 @@ router.get('/:filename', function (req, res, next) {
     ArchiveClient
         .get(req.params.filename)
         .on('error', function(err) {
+            err.message += ' in ArchiveClient';
             return next(err);
         })
         .pipe(res);
@@ -18,6 +19,7 @@ router.patch('/:filename', function (req, res, next) {
     ArchiveClient
         .patch(req.params.filename)
         .on('error', function(err) {
+            err.message += ' in ArchiveClient';
             return next(err);
         })
         .pipe(res);
@@ -27,6 +29,7 @@ router.delete('/:filename', function (req, res, next) {
     ArchiveClient
         .delete(req.params.filename)
         .on('error', function(err) {
+            err.message += ' in ArchiveClient';
             return next(err);
         })
         .pipe(res);
