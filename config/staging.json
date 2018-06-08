@@ -1,0 +1,14 @@
+{
+  "archiveService":{
+    "url": "http://archiveservice.green-staging.svc.cluster.local"
+  },
+  "visaService":{
+    "url": "http://entryrequirementsservice.green-staging.svc.cluster.local"
+  },
+  "formService":{
+    "url": "http://formservice.green-staging.svc.cluster.local"
+  },
+  "conditionService":{
+    "url": "http://conditionservice.green-staging.svc.cluster.local"
+  }
+}

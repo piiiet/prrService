@@ -9,24 +9,26 @@ const ArchiveClient = require('../lib/ArchiveService/client');
 router.post('', function (req, res, next) {
     const r = ConditionClient
         .get(req)
-        .on ('error', function(err) {
+        .on('error', function (err) {
             return next(err);
         })
         .on('response', function (response) {
-            if (response.statusCode === 200) {
+            if (response.statusCode === 200 && response.headers['content-disposition']) { // mediaserver returns 200 even empty response
                 r.pipe(
-                    ArchiveClient.post(function (error, filename) {
-                        if (error) {
-                            return next(new Error(error.message));
-                        }
-                        res.location(filename);
-                        res.redirect(201, filename);
-                    })
+                    ArchiveClient
+                        .post()
+                        .on('error', function (err) {
+                            return next(err);
+                        })
+                        .on('response', function (response) {
+                            res.redirect(response.statusCode, response.headers.location);
+                        })
                 );
             } else {
-                r.pipe(res);
+                res.sendStatus(400);
             }
         });
 });
 
 module.exports = router;
+
