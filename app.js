@@ -29,10 +29,10 @@ app.use('/documents', documents);
 
 // error handler
 app.use(function (req, res, next) {
-    next(createError(404));
+    next(createError(404), req);
 });
 app.use(function (err, req, res, next) {
-    logger.error(err.message, err, req.body);
+    logger.error(err.message, {url:req.url, body:req.body});
     res.status(err.status || 500).send(err.message);
 });
 
