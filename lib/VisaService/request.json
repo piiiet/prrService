@@ -12,9 +12,7 @@
       "maxLength": 3
     },
     "nat": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 2
+      "type": "string"
     },
     "type": {
       "type": "string",

@@ -14,7 +14,12 @@ router.post('', function (req, res, next) {
         })
         .on('response', function (response) {
             if (response.statusCode === 200 && response.headers['content-disposition']) { // mediaserver returns 200 even empty response
-                r.pipe(ArchiveClient.post()).pipe(res);
+                r.pipe(ArchiveClient
+                    .post()
+                    .on('error', function (err) {
+                        return next(err);
+                    })
+                ).pipe(res);
             } else {
                 res.sendStatus(400);
             }
