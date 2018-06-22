@@ -15,7 +15,16 @@ router.post('', function (req, res, next) {
         })
         .on('response', function (response) {
             if (response.statusCode === 200) {
-                r.pipe(ArchiveClient.post()).pipe(res);
+                r.pipe(
+                    ArchiveClient
+                        .post()
+                        .on('error', function (err) {
+                            return next(err);
+                        })
+                        .on('response', function (response) {
+                            res.redirect(response.statusCode, response.headers.location);
+                        })
+                );
             } else {
                 r.pipe(res);
             }
