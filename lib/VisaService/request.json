@@ -21,6 +21,14 @@
         "html"
       ],
       "default": "pdf"
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "passolution",
+        "tip"
+      ],
+      "default": "passolution"
     }
   },
   "oneOf": [
