@@ -2,19 +2,13 @@
   "type": "object",
   "properties": {
     "country": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 2
+      "type": "string"
     },
     "airport": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 3
+      "type": "string"
     },
     "nat": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 2
+      "type": "string"
     },
     "type": {
       "type": "string",
