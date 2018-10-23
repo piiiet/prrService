@@ -10,7 +10,7 @@
   },
   "visaService":{
     "url": "http://entryrequirementsservice:3012",
-    "timeout": 5000
+    "timeout": 10000
   },
   "formService":{
     "url": "http://formservice:3013",
