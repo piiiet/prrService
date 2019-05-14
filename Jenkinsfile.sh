@@ -13,7 +13,7 @@ AVAILABLE_IMAGE_TAGS=()
 
 # MY_GIT_BRANCH without origin/ part
 MY_GIT_BRANCH=$(echo ${GIT_BRANCH} | cut -d'/' -f 2-)
-# MY_GIT_BRANCH without special chracters
+# MY_GIT_BRANCH without special characters
 MY_GIT_BRANCH=$(echo ${MY_GIT_BRANCH//[^-0-9a-zA-Z]/-})
 
 
@@ -23,7 +23,7 @@ IMAGE_COMMIT_ID=$(echo $GIT_COMMIT | cut -c1-8)
 docker build --pull -t $IMAGE_NAME .
 
 # tag and push this image with
-  # if stabe branch used you will have images with tags
+  # if stable branch used you will have images with tags
    # latest
   # branch
   # branch-GIT_COMMIT_ID
