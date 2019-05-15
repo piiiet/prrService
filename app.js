@@ -8,6 +8,7 @@ const alive = require('./routes/alive');
 const visa = require('./routes/visa');
 const conditions = require('./routes/conditions');
 const descriptions = require('./routes/descriptions');
+const verifiedOffers = require('./routes/verifiedOffers');
 const forms = require('./routes/forms');
 const documents = require('./routes/documents');
 
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use('/alive', alive);
 app.use('/conditions', conditions);
 app.use('/descriptions', descriptions);
+app.use('/verifiedOffers', verifiedOffers);
 app.use('/forms', forms);
 app.use('/visa', visa);
 app.use('/documents', documents);
