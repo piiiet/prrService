@@ -10,5 +10,9 @@
   },
   "conditionService":{
     "url": "http://conditionservice.green-staging.svc.cluster.local"
+  },
+  "pdfService":{
+    "url": "http://pdfgenerator.green-staging.svc.cluster.local",
+    "timeout": 2000
   }
 }
