@@ -13,7 +13,7 @@ router.post('', function (req, res, next) {
             return next(err);
         })
         .form({
-            html: req.query.text
+            html: req.body.content
         })
         .pipe(ArchiveClient
             .post()
