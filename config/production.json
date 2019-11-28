@@ -12,7 +12,6 @@
     "url": "http://conditionservice.green-prod.svc.cluster.local"
   },
   "pdfService":{
-    "url": "http://pdfgenerator.green-prod.svc.cluster.local",
-    "timeout": 2000
+    "url": "http://pdfgenerator.green-prod.svc.cluster.local"
   }
 }
